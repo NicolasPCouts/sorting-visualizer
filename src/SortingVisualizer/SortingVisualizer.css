@@ -1,0 +1,11 @@
+.main-div{
+    position: absolute;
+    left: 100px;
+}
+
+.array-item{
+    display: inline-block;
+    width: 4px;
+    margin: 0px 1px;
+    background-color: orange;
+}
