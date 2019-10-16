@@ -1,5 +1,6 @@
 import React from 'react'
 import './SortingVisualizer.css'
+import InsertionSort from '../SortingAlgorithms/InsertionSort'
 
 export default class SortingVisualizer extends React.Component{
 
@@ -23,6 +24,11 @@ export default class SortingVisualizer extends React.Component{
         this.setState({ arrayToSort });
     }
 
+    insertionSort(){
+        let sortedArray = InsertionSort(this.state.arrayToSort);
+        this.setState({ arrayToSort: sortedArray });
+    }
+
     render() {
         const {arrayToSort} = this.state;
 
@@ -35,6 +41,7 @@ export default class SortingVisualizer extends React.Component{
                 ))}
 
                 <button onClick={() => this.resetArray()}>Generate new array</button>
+                <button onClick={() => this.insertionSort()}>Insertion Sort</button>
             </ div>
         );
     }
