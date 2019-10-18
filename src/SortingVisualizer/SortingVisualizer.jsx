@@ -1,6 +1,7 @@
 import React from 'react'
 import './SortingVisualizer.css'
 import InsertionSort from '../SortingAlgorithms/InsertionSort'
+import { animationFrame } from 'C:/Users/nicol/AppData/Local/Microsoft/TypeScript/3.6/node_modules/rxjs/internal/scheduler/animationFrame';
 
 export default class SortingVisualizer extends React.Component{
 
@@ -25,8 +26,19 @@ export default class SortingVisualizer extends React.Component{
     }
 
     insertionSort(){
-        let sortedArray = InsertionSort(this.state.arrayToSort);
-        this.setState({ arrayToSort: sortedArray });
+        let sortedArrayAnim = InsertionSort(this.state.arrayToSort);
+        let arrayToSort = this.state.arrayToSort;
+        console.log(arrayToSort);
+        for (let index = 0; index < sortedArrayAnim.length; index++) {
+            const [i,j] = sortedArrayAnim[index];
+            setTimeout(() => {
+                let temp = arrayToSort[i];
+                arrayToSort[i] = arrayToSort[j];
+                arrayToSort[j] = temp;
+                this.setState({ arrayToSort })
+            }, 10);
+            
+        }
     }
 
     render() {

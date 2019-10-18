@@ -1,17 +1,19 @@
-export default function InsertionSort(arr){
+export default function InsertionSort(array){
+    var arr = array.slice(0);
+    let animations = []
     for (let index = 0; index < arr.length; index++) {
         
         if(index != 0){
             let currentIndex = index
             while(arr[currentIndex] < arr[currentIndex - 1]){
                 if(currentIndex == 0){ break; }
-
-                var temp = arr[currentIndex];
+                let temp = arr[currentIndex];
                 arr[currentIndex] = arr[currentIndex - 1];
                 arr[currentIndex - 1] = temp
+                animations.push([currentIndex, currentIndex - 1]);
                 currentIndex--;
             }
         }
     }
-    return arr;
+    return animations;
 }
