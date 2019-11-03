@@ -1,10 +1,12 @@
 import React from 'react'
 import './SortingVisualizer.css'
 import InsertionSort from '../SortingAlgorithms/InsertionSort'
+import SelectionSort from '../SortingAlgorithms/SelectionSort'
 
-const NORMAL_COLOR = 'white';
-const CHANGED_COLOR = 'red';
-const AFTER_CHANGE_COLOR = 'orange';
+const NORMAL_COLOR = 'red';
+const CHANGED_COLOR = 'white';
+const AFTER_CHANGE_COLOR = 'green';
+
 
 export default class SortingVisualizer extends React.Component{
 
@@ -24,31 +26,45 @@ export default class SortingVisualizer extends React.Component{
     resetArray(){
         const arrayToSort = [];
         const prevChanged = [];
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 20; i++) {
             arrayToSort.push(this.RandomIntBetweenRange(5, 1000));
         }
         this.setState({ arrayToSort, prevChanged });
     }
 
-    async insertionSort(){
+    insertionSort(){
         let sortedArrayAnim = InsertionSort(this.state.arrayToSort);
         let arrayToSort = this.state.arrayToSort;
         let prevChanged = this.state.prevChanged;
 
         //loop through all the animations
         for (let index = 0; index < sortedArrayAnim.length; index++) {
-            await wait();
             const [i,j] = sortedArrayAnim[index];
 
-            //change array
-            let temp = arrayToSort[i];
-            arrayToSort[i] = arrayToSort[j];
-            arrayToSort[j] = temp;
+            setTimeout(() => {
+                //change array
+                let temp = arrayToSort[i];
+                arrayToSort[i] = arrayToSort[j];
+                arrayToSort[j] = temp;
+            
+                prevChanged.push(i,j);
 
-            prevChanged.push(i,j);
+                if(index == sortedArrayAnim.length - 1){
+                    prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
+                    this.setState({prevChanged});
+                }
 
-            this.setState({ arrayToSort, prevChanged })
+                this.setState({ arrayToSort, prevChanged })
+
+            }, index * 50);
         }
+    }
+
+    selectionSort(){
+        console.log(this.state.arrayToSort);
+        let sortedArray = SelectionSort(this.state.arrayToSort);
+        console.log(sortedArray);
+        this.setState({ arrayToSort: sortedArray });
     }
 
     getColor(index){
@@ -81,6 +97,7 @@ export default class SortingVisualizer extends React.Component{
 
                 <button onClick={() => this.resetArray()}>Generate new array</button>
                 <button onClick={() => this.insertionSort()}>Insertion Sort</button>
+                <button onClick={() => this.selectionSort()}>Selection Sort</button>
             </ div>
         );
     }
@@ -88,11 +105,4 @@ export default class SortingVisualizer extends React.Component{
     RandomIntBetweenRange(min, max){
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-}
-
-
-async function wait() {
-	return new Promise(function(resolve) {
-  	setTimeout(resolve, 1);
-  });
 }
