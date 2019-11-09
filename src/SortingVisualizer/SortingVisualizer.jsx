@@ -3,8 +3,8 @@ import './SortingVisualizer.css'
 import InsertionSort from '../SortingAlgorithms/InsertionSort'
 import SelectionSort from '../SortingAlgorithms/SelectionSort'
 
-const NORMAL_COLOR = 'red';
-const CHANGED_COLOR = 'white';
+const NORMAL_COLOR = 'white';
+const CHANGED_COLOR = 'red';
 const AFTER_CHANGE_COLOR = 'green';
 
 
@@ -26,7 +26,7 @@ export default class SortingVisualizer extends React.Component{
     resetArray(){
         const arrayToSort = [];
         const prevChanged = [];
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 100; i++) {
             arrayToSort.push(this.RandomIntBetweenRange(5, 1000));
         }
         this.setState({ arrayToSort, prevChanged });
@@ -56,15 +56,38 @@ export default class SortingVisualizer extends React.Component{
 
                 this.setState({ arrayToSort, prevChanged })
 
-            }, index * 50);
+            }, index * 1);
         }
     }
 
     selectionSort(){
-        console.log(this.state.arrayToSort);
-        let sortedArray = SelectionSort(this.state.arrayToSort);
-        console.log(sortedArray);
-        this.setState({ arrayToSort: sortedArray });
+        let sortedArrayAnim = SelectionSort(this.state.arrayToSort);
+        let arrayToSort = this.state.arrayToSort;
+        let prevChanged = this.state.prevChanged;
+        console.log(sortedArrayAnim);
+        //loop through all the animations
+        for (let index = 0; index < sortedArrayAnim.length; index++) {
+            const [i,j, swap] = sortedArrayAnim[index];
+
+            setTimeout(() => {
+                //change array
+                if(swap){
+                    let temp = arrayToSort[i];
+                    arrayToSort[i] = arrayToSort[j];
+                    arrayToSort[j] = temp;
+                }
+            
+                prevChanged.push(i,j);
+
+                if(index == sortedArrayAnim.length - 1){
+                    prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
+                    this.setState({prevChanged});
+                }
+
+                this.setState({ arrayToSort, prevChanged });
+                
+            }, index * 10);
+        }
     }
 
     getColor(index){

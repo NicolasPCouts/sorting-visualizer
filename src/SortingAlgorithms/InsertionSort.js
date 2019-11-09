@@ -1,5 +1,5 @@
 export default function InsertionSort(array){
-    var arr = array.slice(0);
+    let arr = array.slice(0);
     let animations = []
     for (let index = 0; index < arr.length; index++) {
         
