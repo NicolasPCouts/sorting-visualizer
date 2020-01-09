@@ -2,6 +2,7 @@ import React from 'react'
 import './SortingVisualizer.css'
 import InsertionSort from '../SortingAlgorithms/InsertionSort'
 import SelectionSort from '../SortingAlgorithms/SelectionSort'
+import BubbleSort from '../SortingAlgorithms/BubbleSort'
 
 const NORMAL_COLOR = 'white';
 const CHANGED_COLOR = 'red';
@@ -56,7 +57,7 @@ export default class SortingVisualizer extends React.Component{
 
                 this.setState({ arrayToSort, prevChanged })
 
-            }, index * 1);
+            }, index * 10);
         }
     }
 
@@ -121,6 +122,7 @@ export default class SortingVisualizer extends React.Component{
                 <button onClick={() => this.resetArray()}>Generate new array</button>
                 <button onClick={() => this.insertionSort()}>Insertion Sort</button>
                 <button onClick={() => this.selectionSort()}>Selection Sort</button>
+                <button onClick={() => BubbleSort(arrayToSort)}>Bubble Sort</button>
             </ div>
         );
     }

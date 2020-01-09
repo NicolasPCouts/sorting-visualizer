@@ -9,7 +9,7 @@ export default function InsertionSort(array){
                 if(currentIndex == 0){ break; }
                 let temp = arr[currentIndex];
                 arr[currentIndex] = arr[currentIndex - 1];
-                arr[currentIndex - 1] = temp
+                arr[currentIndex - 1] = temp;
                 animations.push([currentIndex, currentIndex - 1]);
                 currentIndex--;
             }
