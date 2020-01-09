@@ -9,6 +9,7 @@ export default function BubbleSort(array){
                 let temp = arr[i];
                 arr[i] = arr[i + 1];
                 arr[i + 1] = temp;
+                animations.push([i, i + 1]);
                 hasChanged = true;
             }
             
@@ -17,4 +18,5 @@ export default function BubbleSort(array){
             break;
     }
     console.log(arr);
+    return arr;
 }

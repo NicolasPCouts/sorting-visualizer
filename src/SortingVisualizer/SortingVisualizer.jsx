@@ -33,6 +33,31 @@ export default class SortingVisualizer extends React.Component{
         this.setState({ arrayToSort, prevChanged });
     }
 
+    bubbleSort(){
+        let sortedArrayAnim = InsertionSort(this.state.arrayToSort);
+        let arrayToSort = this.state.arrayToSort;
+        let prevChanged = this.state.prevChanged;
+
+        for (let index = 0; index < sortedArrayAnim.length; index++) {
+            const [i,j] = sortedArrayAnim[index];
+
+            setTimeout(() => {
+                let temp = arrayToSort[i];
+                arrayToSort[i] = arrayToSort[j];
+                arrayToSort[j] = temp;
+            
+                prevChanged.push(i,j);
+
+                if(index == sortedArrayAnim.length - 1){
+                    prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
+                    this.setState({prevChanged});
+                }
+
+                this.setState({ arrayToSort,prevChanged });
+            }, index * 10);
+        }
+    }
+
     insertionSort(){
         let sortedArrayAnim = InsertionSort(this.state.arrayToSort);
         let arrayToSort = this.state.arrayToSort;
@@ -114,7 +139,7 @@ export default class SortingVisualizer extends React.Component{
         return (
             <div className="main-div">
                 {arrayToSort.map((value, idx) => (
-                    <div className="array-item" key={idx} style={{height: value, backgroundColor: this.getColor(idx)}}>
+                    <div className="array-item" key={idx} style={{height: value / 2, backgroundColor: this.getColor(idx)}}>
                         
                     </div>
                 ))}
@@ -122,7 +147,7 @@ export default class SortingVisualizer extends React.Component{
                 <button onClick={() => this.resetArray()}>Generate new array</button>
                 <button onClick={() => this.insertionSort()}>Insertion Sort</button>
                 <button onClick={() => this.selectionSort()}>Selection Sort</button>
-                <button onClick={() => BubbleSort(arrayToSort)}>Bubble Sort</button>
+                <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
             </ div>
         );
     }
