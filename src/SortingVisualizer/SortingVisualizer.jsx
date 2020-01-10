@@ -3,6 +3,7 @@ import './SortingVisualizer.css'
 import InsertionSort from '../SortingAlgorithms/InsertionSort'
 import SelectionSort from '../SortingAlgorithms/SelectionSort'
 import BubbleSort from '../SortingAlgorithms/BubbleSort'
+import GetQuickSortAnimation from '../SortingAlgorithms/QuickSort'
 
 const NORMAL_COLOR = 'white';
 const CHANGED_COLOR = 'red';
@@ -56,6 +57,10 @@ export default class SortingVisualizer extends React.Component{
                 this.setState({ arrayToSort,prevChanged });
             }, index * 10);
         }
+    }
+
+    quickSort(){
+        GetQuickSortAnimation(this.state.arrayToSort);
     }
 
     insertionSort(){
@@ -148,6 +153,7 @@ export default class SortingVisualizer extends React.Component{
                 <button onClick={() => this.insertionSort()}>Insertion Sort</button>
                 <button onClick={() => this.selectionSort()}>Selection Sort</button>
                 <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+                <button onClick={() => this.quickSort()}>Quick Sort</button>
             </ div>
         );
     }
