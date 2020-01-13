@@ -7,7 +7,7 @@ import GetQuickSortAnimation from '../SortingAlgorithms/QuickSort'
 
 const NORMAL_COLOR = 'white';
 const CHANGED_COLOR = 'red';
-const AFTER_CHANGE_COLOR = 'green';
+const AFTER_CHANGE_COLOR = 'rgb(4, 255, 0)';
 
 
 export default class SortingVisualizer extends React.Component{
@@ -22,8 +22,8 @@ export default class SortingVisualizer extends React.Component{
     }
 
     componentDidMount(){
-        //this.resetArray();
-        this.setState({arrayToSort:[50,23,9,18,61,32]});
+        this.resetArray();
+        this.setState({arrayToSort:[], prevChanged:[]});
     }
 
     resetArray(){
