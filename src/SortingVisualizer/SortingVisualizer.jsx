@@ -22,7 +22,8 @@ export default class SortingVisualizer extends React.Component{
     }
 
     componentDidMount(){
-        this.resetArray();
+        //this.resetArray();
+        this.setState({arrayToSort:[50,23,9,18,61,32]});
     }
 
     resetArray(){
@@ -60,7 +61,29 @@ export default class SortingVisualizer extends React.Component{
     }
 
     quickSort(){
-        GetQuickSortAnimation(this.state.arrayToSort);
+        let sortedArrayAnim = GetQuickSortAnimation(this.state.arrayToSort);
+        let arrayToSort = this.state.arrayToSort;
+        let prevChanged = this.state.prevChanged;
+        for (let index = 0; index < sortedArrayAnim.length; index++) {
+            const [i,j] = sortedArrayAnim[index];
+
+            setTimeout(() => {
+                //change array
+                let temp = arrayToSort[i];
+                arrayToSort[i] = arrayToSort[j];
+                arrayToSort[j] = temp;
+            
+                prevChanged.push(i,j);
+
+                if(index == sortedArrayAnim.length - 1){
+                    prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
+                    this.setState({prevChanged});
+                }
+
+                this.setState({ arrayToSort, prevChanged })
+
+            }, index * 10);
+        }
     }
 
     insertionSort(){
