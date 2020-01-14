@@ -18,5 +18,5 @@ export default function BubbleSort(array){
             break;
     }
     console.log(arr);
-    return arr;
+    return animations;
 }

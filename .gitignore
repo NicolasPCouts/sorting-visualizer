@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+/.vscode
 # production
 /build
 
