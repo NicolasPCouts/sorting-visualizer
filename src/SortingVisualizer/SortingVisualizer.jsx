@@ -14,10 +14,10 @@ export default class SortingVisualizer extends React.Component{
 
     constructor(props){
         super(props);
-        
         this.state = {
             arrayToSort: [],
-            prevChanged: []
+            prevChanged: [],
+            numberOfItems: 100
         };
     }
 
@@ -29,7 +29,7 @@ export default class SortingVisualizer extends React.Component{
     resetArray(){
         const arrayToSort = [];
         const prevChanged = [];
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < this.state.numberOfItems; i++) {
             arrayToSort.push(this.RandomIntBetweenRange(5, 1000));
         }
         this.setState({ arrayToSort, prevChanged });
@@ -90,7 +90,7 @@ export default class SortingVisualizer extends React.Component{
         let sortedArrayAnim = SelectionSort(this.state.arrayToSort);
         let arrayToSort = this.state.arrayToSort;
         let prevChanged = this.state.prevChanged;
-        console.log(sortedArrayAnim);
+
         //loop through all the animations
         for (let index = 0; index < sortedArrayAnim.length; index++) {
             const [i,j, swap] = sortedArrayAnim[index];
@@ -116,6 +116,12 @@ export default class SortingVisualizer extends React.Component{
         }
     }
 
+    handleOnChange(event){
+        console.log(event.target.value);
+        this.setState({numberOfItems : event.target.value})
+        
+    }
+
     getColor(index){
 
         let prevChanged = this.state.prevChanged;
@@ -131,11 +137,12 @@ export default class SortingVisualizer extends React.Component{
         else{
             return NORMAL_COLOR;
         }
+        
     }
+
 
     render() {
         const {arrayToSort} = this.state;
-
         return (
             <div className="main-div">
                 {arrayToSort.map((value, idx) => (
@@ -149,6 +156,7 @@ export default class SortingVisualizer extends React.Component{
                 <button onClick={() => this.SortArray(BubbleSort)}>Bubble Sort</button>
                 <button onClick={() => this.selectionSort()}>Selection Sort</button>
                 <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
+                <input type="number" min="5" max="1500" onChange={() => this.handleOnChange} value={this.state.numberOfItems}/>
             </ div>
         );
     }
