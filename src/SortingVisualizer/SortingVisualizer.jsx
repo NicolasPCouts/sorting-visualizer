@@ -118,7 +118,8 @@ export default class SortingVisualizer extends React.Component{
 
     handleOnChange(event){
         console.log(event.target.value);
-        this.setState({numberOfItems : event.target.value})
+        this.setState({numberOfItems : event.target.value});
+        this.resetArray();
         
     }
 
@@ -146,7 +147,7 @@ export default class SortingVisualizer extends React.Component{
         return (
             <div className="main-div">
                 {arrayToSort.map((value, idx) => (
-                    <div className="array-item" key={idx} style={{height: value / 2, backgroundColor: this.getColor(idx)}}>
+                    <div className="array-item" key={idx} style={{height: value / 2, width: 400 / this.state.numberOfItems, backgroundColor: this.getColor(idx)}}>
                         
                     </div>
                 ))}
@@ -156,7 +157,7 @@ export default class SortingVisualizer extends React.Component{
                 <button onClick={() => this.SortArray(BubbleSort)}>Bubble Sort</button>
                 <button onClick={() => this.selectionSort()}>Selection Sort</button>
                 <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
-                <input type="number" min="5" max="1500" onChange={() => this.handleOnChange} value={this.state.numberOfItems}/>
+                <input type="number" min="5" max="1500" onChange={(event) => this.handleOnChange(event)} defaultValue={this.state.numberOfItems}/>
             </ div>
         );
     }
