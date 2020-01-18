@@ -62,33 +62,7 @@ export default class SortingVisualizer extends React.Component{
         }
     }
 
-    async quickSort(){
-        let sortedArrayAnim = GetQuickSortAnimation(this.state.arrayToSort);
-        let arrayToSort = this.state.arrayToSort;
-        let prevChanged = this.state.prevChanged;
-        for (let index = 0; index < sortedArrayAnim.length; index++) {
-            const [i,j] = sortedArrayAnim[index];
-
-            //setTimeout(() => {
-                //change array
-                let temp = arrayToSort[i];
-                arrayToSort[i] = arrayToSort[j];
-                arrayToSort[j] = temp;
-            
-                prevChanged.push(i,j);
-
-                if(index == sortedArrayAnim.length - 1){
-                    prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
-                    this.setState({prevChanged});
-                }
-
-                this.setState({ arrayToSort, prevChanged })
-                await sleep(10);
-            //}, index * 10);
-        }
-    }
-
-    selectionSort(){
+    async selectionSort(){
         let sortedArrayAnim = SelectionSort(this.state.arrayToSort);
         let arrayToSort = this.state.arrayToSort;
         let prevChanged = this.state.prevChanged;
@@ -97,7 +71,7 @@ export default class SortingVisualizer extends React.Component{
         for (let index = 0; index < sortedArrayAnim.length; index++) {
             const [i,j, swap] = sortedArrayAnim[index];
 
-            setTimeout(() => {
+            //setTimeout(() => {
                 //change array
                 if(swap){
                     let temp = arrayToSort[i];
@@ -114,14 +88,16 @@ export default class SortingVisualizer extends React.Component{
 
                 this.setState({ arrayToSort, prevChanged });
                 
-            }, index * 10);
+            //}, index * 10);
+            await sleep(10);
         }
     }
 
     handleOnChange(event){
-        console.log(event.target.value);
+        console.log(this.state.numberOfItems);
         this.setState({numberOfItems : event.target.value});
         this.resetArray();
+        console.log(event.target.value + " - " + this.state.numberOfItems + " - arraySize: " + this.state.arrayToSort.length);
         
     }
 
@@ -155,8 +131,8 @@ export default class SortingVisualizer extends React.Component{
                 ))}
 
                 <button onClick={() => this.resetArray()}>Generate new array</button>
-                <button onClick={() => this.SortArray(InsertionSort)}>Insertion Sort</button>
                 <button onClick={() => this.SortArray(BubbleSort)}>Bubble Sort</button>
+                <button onClick={() => this.SortArray(InsertionSort)}>Insertion Sort</button>
                 <button onClick={() => this.selectionSort()}>Selection Sort</button>
                 <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
                 <input type="number" min="5" max="1500" onChange={(event) => this.handleOnChange(event)} defaultValue={this.state.numberOfItems}/>
