@@ -10,7 +10,6 @@ function QuickSort(arr, low, high){
     
     if(low < high){
         let pi = Partition(arr, low, high);
-        console.log(arr);
         QuickSort(arr, low, pi - 1);
         QuickSort(arr, pi + 1, high);
     }

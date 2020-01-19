@@ -9,9 +9,9 @@ const NORMAL_COLOR = 'white';
 const CHANGED_COLOR = 'red';
 const AFTER_CHANGE_COLOR = 'rgb(4, 255, 0)';
 
+var abort = false;
 
 export default class SortingVisualizer extends React.Component{
-
     constructor(props){
         super(props);
         this.state = {
@@ -23,7 +23,6 @@ export default class SortingVisualizer extends React.Component{
 
     componentDidMount(){
         this.resetArray();
-        //this.setState({arrayToSort:[], prevChanged:[]});
     }
 
     resetArray(){
@@ -33,6 +32,12 @@ export default class SortingVisualizer extends React.Component{
             arrayToSort.push(this.RandomIntBetweenRange(5, 1000));
         }
         this.setState({ arrayToSort, prevChanged });
+        abort = false;
+    }
+    
+    generateNewArray(){
+        abort = true;
+        this.resetArray();
     }
 
     async SortArray(algo){
@@ -41,24 +46,25 @@ export default class SortingVisualizer extends React.Component{
         let prevChanged = this.state.prevChanged;
 
         for (let index = 0; index < sortedArrayAnim.length; index++) {
+            if(this.abort){
+                console.log(abort);
+                return null;
+            }
             const [i,j] = sortedArrayAnim[index];
 
-            //setTimeout(() => {
-                let temp = arrayToSort[i];
-                arrayToSort[i] = arrayToSort[j];
-                arrayToSort[j] = temp;
-            
-                prevChanged.push(i,j);
+            let temp = arrayToSort[i];
+            arrayToSort[i] = arrayToSort[j];
+            arrayToSort[j] = temp;
+        
+            prevChanged.push(i,j);
 
-                if(index == sortedArrayAnim.length - 1){
-                    prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
-                    this.setState({prevChanged});
-                }
+            if(index == sortedArrayAnim.length - 1){
+                prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
+                this.setState({prevChanged});
+            }
 
-                this.setState({ arrayToSort,prevChanged });
-                await sleep(10);
-                
-            //}, index * 10);
+            this.setState({ arrayToSort,prevChanged });
+            await sleep(10);
         }
     }
 
@@ -71,33 +77,33 @@ export default class SortingVisualizer extends React.Component{
         for (let index = 0; index < sortedArrayAnim.length; index++) {
             const [i,j, swap] = sortedArrayAnim[index];
 
-            //setTimeout(() => {
-                //change array
-                if(swap){
-                    let temp = arrayToSort[i];
-                    arrayToSort[i] = arrayToSort[j];
-                    arrayToSort[j] = temp;
-                }
-            
-                prevChanged.push(i,j);
+            //change array
+            if(swap){
+                let temp = arrayToSort[i];
+                arrayToSort[i] = arrayToSort[j];
+                arrayToSort[j] = temp;
+            }
+        
+            prevChanged.push(i,j);
 
-                if(index == sortedArrayAnim.length - 1){
-                    prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
-                    this.setState({prevChanged});
-                }
+            if(index == sortedArrayAnim.length - 1){
+                prevChanged.push(arrayToSort.length + 1, arrayToSort.length + 1);
+                this.setState({prevChanged});
+            }
 
-                this.setState({ arrayToSort, prevChanged });
+            this.setState({ arrayToSort, prevChanged });
                 
-            //}, index * 10);
             await sleep(10);
         }
     }
 
     handleOnChange(event){
         console.log(this.state.numberOfItems);
-        this.setState({numberOfItems : event.target.value});
-        this.resetArray();
-        console.log(event.target.value + " - " + this.state.numberOfItems + " - arraySize: " + this.state.arrayToSort.length);
+        event.persist();
+        this.setState({numberOfItems : event.target.value}, () => {
+            this.resetArray();
+            console.log(event.target.value + " - " + this.state.numberOfItems + " - arraySize: " + this.state.arrayToSort.length);
+        });
         
     }
 
@@ -125,12 +131,12 @@ export default class SortingVisualizer extends React.Component{
         return (
             <div className="main-div">
                 {arrayToSort.map((value, idx) => (
-                    <div className="array-item" key={idx} style={{height: value / 2, width: 400 / this.state.numberOfItems, backgroundColor: this.getColor(idx)}}>
+                    <div className="array-item" key={idx} style={{height: value, width: 800 / this.state.numberOfItems, backgroundColor: this.getColor(idx)}}>
                         
                     </div>
                 ))}
 
-                <button onClick={() => this.resetArray()}>Generate new array</button>
+                <button onClick={() => this.generateNewArray()}>Generate new array</button>
                 <button onClick={() => this.SortArray(BubbleSort)}>Bubble Sort</button>
                 <button onClick={() => this.SortArray(InsertionSort)}>Insertion Sort</button>
                 <button onClick={() => this.selectionSort()}>Selection Sort</button>
