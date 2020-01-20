@@ -2,9 +2,14 @@ html{
     background: black;
 }
 
-.main-div{
-    position: absolute;
-    left: 100px;
+#centerdiv{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#centerdivKeepWidth{
+    margin: 0 auto;
+    text-align: center;
 }
 
 .array-item{

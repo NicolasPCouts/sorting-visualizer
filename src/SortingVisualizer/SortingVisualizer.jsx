@@ -129,19 +129,22 @@ export default class SortingVisualizer extends React.Component{
     render() {
         const {arrayToSort} = this.state;
         return (
-            <div className="main-div">
-                {arrayToSort.map((value, idx) => (
-                    <div className="array-item" key={idx} style={{height: value, width: 800 / this.state.numberOfItems, backgroundColor: this.getColor(idx)}}>
-                        
-                    </div>
-                ))}
-
-                <button onClick={() => this.generateNewArray()}>Generate new array</button>
-                <button onClick={() => this.SortArray(BubbleSort)}>Bubble Sort</button>
-                <button onClick={() => this.SortArray(InsertionSort)}>Insertion Sort</button>
-                <button onClick={() => this.selectionSort()}>Selection Sort</button>
-                <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
-                <input type="number" min="5" max="1500" onChange={(event) => this.handleOnChange(event)} defaultValue={this.state.numberOfItems}/>
+            <div className="main-div" id="centerdiv">
+                <div id="centerdivKeepWidth">
+                    {arrayToSort.map((value, idx) => (
+                        <div className="array-item" key={idx} style={{height: value, width: 800 / this.state.numberOfItems, backgroundColor: this.getColor(idx), display: "inline-block"}}>
+                            
+                        </div>
+                    ))}
+                </div>
+                <div id="centerdivKeepWidth">
+                    <button onClick={() => this.generateNewArray()}>Generate new array</button>
+                    <button onClick={() => this.SortArray(BubbleSort)}>Bubble Sort</button>
+                    <button onClick={() => this.SortArray(InsertionSort)}>Insertion Sort</button>
+                    <button onClick={() => this.selectionSort()}>Selection Sort</button>
+                    <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
+                    <input type="number" min="5" max="1500" onChange={(event) => this.handleOnChange(event)} defaultValue={this.state.numberOfItems}/>
+                </div>
             </ div>
         );
     }
