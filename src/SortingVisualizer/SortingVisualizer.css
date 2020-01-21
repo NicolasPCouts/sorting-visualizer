@@ -17,3 +17,13 @@ html{
     display: inline-block;
     
 }
+
+label{
+    color: white;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+div button, div input, div label{
+    margin: 0px 10px;
+}

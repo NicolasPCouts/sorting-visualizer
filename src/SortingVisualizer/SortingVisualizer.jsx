@@ -138,7 +138,7 @@ export default class SortingVisualizer extends React.Component{
             <div className="main-div" id="centerdiv">
                 <div id="centerdivKeepWidth">
                     {arrayToSort.map((heightValue, idx) => (
-                        <div className="array-item" key={idx} style={{height: `${heightValue / 20}vw`, width: `${widthValue}vw`, backgroundColor: this.getColor(idx)}}>
+                        <div className="array-item" key={idx} style={{height: `${heightValue / 25}vw`, width: `${widthValue}vw`, backgroundColor: this.getColor(idx)}}>
                             
                         </div>
                     ))}
@@ -149,8 +149,12 @@ export default class SortingVisualizer extends React.Component{
                     <button onClick={() => this.SortArray(InsertionSort)}>Insertion Sort</button>
                     <button onClick={() => this.selectionSort()}>Selection Sort</button>
                     <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
+                </div>
+                <div id="centerdivKeepWidth">
+                    <label>number of items: </label>
                     <input type="number" min="5" max="1500" onChange={(event) => this.handleItemsInputOnChange(event)} defaultValue={this.state.numberOfItems}/>
-                    <input type="number" min="1" max="100" onChange={(event) => this.handleDelayInputOnChange(event)} defaultValue={this.state.numberOfItems}/>
+                    <label>Delay: </label>
+                    <input type="number" min="1" max="100" onChange={(event) => this.handleDelayInputOnChange(event)} defaultValue={this.state.delay}/>
                 </div>
             </ div>
         );
