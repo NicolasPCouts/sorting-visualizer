@@ -17,7 +17,8 @@ export default class SortingVisualizer extends React.Component{
         this.state = {
             arrayToSort: [],
             prevChanged: [],
-            numberOfItems: 100
+            numberOfItems: 100,
+            delay: 10
         };
     }
 
@@ -64,7 +65,7 @@ export default class SortingVisualizer extends React.Component{
             }
 
             this.setState({ arrayToSort,prevChanged });
-            await sleep(10);
+            await sleep(this.state.delay);
         }
     }
 
@@ -93,17 +94,21 @@ export default class SortingVisualizer extends React.Component{
 
             this.setState({ arrayToSort, prevChanged });
                 
-            await sleep(10);
+            await sleep(this.state.delay);
         }
     }
 
-    handleOnChange(event){
-        console.log(this.state.numberOfItems);
+    handleItemsInputOnChange(event){
         event.persist();
         this.setState({numberOfItems : event.target.value}, () => {
             this.resetArray();
             console.log(event.target.value + " - " + this.state.numberOfItems + " - arraySize: " + this.state.arrayToSort.length);
         });
+        
+    }
+
+    handleDelayInputOnChange(event){
+        this.setState({delay : event.target.value});
         
     }
 
@@ -144,7 +149,8 @@ export default class SortingVisualizer extends React.Component{
                     <button onClick={() => this.SortArray(InsertionSort)}>Insertion Sort</button>
                     <button onClick={() => this.selectionSort()}>Selection Sort</button>
                     <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
-                    <input type="number" min="5" max="1500" onChange={(event) => this.handleOnChange(event)} defaultValue={this.state.numberOfItems}/>
+                    <input type="number" min="5" max="1500" onChange={(event) => this.handleItemsInputOnChange(event)} defaultValue={this.state.numberOfItems}/>
+                    <input type="number" min="1" max="100" onChange={(event) => this.handleDelayInputOnChange(event)} defaultValue={this.state.numberOfItems}/>
                 </div>
             </ div>
         );
