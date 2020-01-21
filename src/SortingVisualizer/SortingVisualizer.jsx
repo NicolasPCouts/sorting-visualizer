@@ -164,6 +164,7 @@ export default class SortingVisualizer extends React.Component{
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }
+
 const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
