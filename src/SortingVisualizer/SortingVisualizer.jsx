@@ -128,11 +128,12 @@ export default class SortingVisualizer extends React.Component{
 
     render() {
         const {arrayToSort} = this.state;
+        let widthValue = 40 / this.state.numberOfItems;
         return (
             <div className="main-div" id="centerdiv">
                 <div id="centerdivKeepWidth">
-                    {arrayToSort.map((value, idx) => (
-                        <div className="array-item" key={idx} style={{height: value, width: 800 / this.state.numberOfItems, backgroundColor: this.getColor(idx), display: "inline-block"}}>
+                    {arrayToSort.map((heightValue, idx) => (
+                        <div className="array-item" key={idx} style={{height: `${heightValue / 20}vw`, width: `${widthValue}vw`, backgroundColor: this.getColor(idx)}}>
                             
                         </div>
                     ))}
