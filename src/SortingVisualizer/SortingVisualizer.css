@@ -1,5 +1,5 @@
 html{
-    background: black;
+    background: #511845;
 }
 
 #centerdiv{
@@ -8,20 +8,47 @@ html{
     white-space: nowrap;
 }
 
-#centerdivKeepWidth{
+.centerdivKeepWidth{
     margin: 0 auto;
     text-align: center;
 }
 
 .array-item{
     display: inline-block;
-    
+    border-radius: 15px 15px 0px 0px;
+    margin: 0px 0px 2px 2px;
 }
 
 label{
     color: white;
     font-size: x-large;
     font-weight: 700;
+}
+
+#buttonsDiv{
+    height: 30%;
+}
+
+button{
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 15px 10px;
+    transition: all 0.3s;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    color: #fff;
+    background: #ff5733;
+    border: 4px solid #ff5733;
+    border-radius: 60px;
+}
+button:hover {
+    background: transparent;
+    color: #ff5733;
 }
 
 div button, div input, div label{

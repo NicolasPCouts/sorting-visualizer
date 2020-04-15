@@ -1,6 +1,5 @@
 export default function BubbleSort(array){
     let arr = array.slice(0);
-    console.log(arr);
     let animations = []
     while(true){
         let hasChanged = false;
@@ -17,6 +16,5 @@ export default function BubbleSort(array){
         if(!hasChanged)
             break;
     }
-    console.log(arr);
     return animations;
 }

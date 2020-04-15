@@ -5,9 +5,9 @@ import SelectionSort from '../SortingAlgorithms/SelectionSort'
 import BubbleSort from '../SortingAlgorithms/BubbleSort'
 import GetQuickSortAnimation from '../SortingAlgorithms/QuickSort'
 
-const NORMAL_COLOR = 'white';
-const CHANGED_COLOR = 'red';
-const AFTER_CHANGE_COLOR = 'rgb(4, 255, 0)';
+const NORMAL_COLOR = '#900c3f';
+const CHANGED_COLOR = '#c70039';
+const AFTER_CHANGE_COLOR = '#ff5733';
 
 var abort = false;
 
@@ -136,21 +136,21 @@ export default class SortingVisualizer extends React.Component{
         let widthValue = 40 / this.state.numberOfItems;
         return (
             <div className="main-div" id="centerdiv">
-                <div id="centerdivKeepWidth">
+                <div className="centerdivKeepWidth">
                     {arrayToSort.map((heightValue, idx) => (
                         <div className="array-item" key={idx} style={{height: `${heightValue / 25}vw`, width: `${widthValue}vw`, backgroundColor: this.getColor(idx)}}>
                             
                         </div>
                     ))}
                 </div>
-                <div id="centerdivKeepWidth">
+                <div className="centerdivKeepWidth" id="buttonsDiv">
                     <button onClick={() => this.generateNewArray()}>Generate new array</button>
                     <button onClick={() => this.SortArray(BubbleSort)}>Bubble Sort</button>
                     <button onClick={() => this.SortArray(InsertionSort)}>Insertion Sort</button>
                     <button onClick={() => this.selectionSort()}>Selection Sort</button>
                     <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
                 </div>
-                <div id="centerdivKeepWidth">
+                <div className="centerdivKeepWidth">
                     <label>number of items: </label>
                     <input type="number" min="5" max="1500" onChange={(event) => this.handleItemsInputOnChange(event)} defaultValue={this.state.numberOfItems}/>
                     <label>Delay: </label>
