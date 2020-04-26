@@ -6,7 +6,7 @@ import BubbleSort from '../SortingAlgorithms/BubbleSort'
 import GetQuickSortAnimation from '../SortingAlgorithms/QuickSort'
 
 const NORMAL_COLOR = '#900c3f';
-const CHANGED_COLOR = '#c70039';
+const CHANGED_COLOR = '#51ff00';
 const AFTER_CHANGE_COLOR = '#ff5733';
 
 var abort = false;
@@ -150,11 +150,15 @@ export default class SortingVisualizer extends React.Component{
                     <button onClick={() => this.selectionSort()}>Selection Sort</button>
                     <button onClick={() => this.SortArray(GetQuickSortAnimation)}>Quick Sort</button>
                 </div>
-                <div className="centerdivKeepWidth">
-                    <label>number of items: </label>
-                    <input type="number" min="5" max="1500" onChange={(event) => this.handleItemsInputOnChange(event)} defaultValue={this.state.numberOfItems}/>
-                    <label>Delay: </label>
-                    <input type="number" min="1" max="100" onChange={(event) => this.handleDelayInputOnChange(event)} defaultValue={this.state.delay}/>
+                <div className="flexDiv">
+                    <div className="centerdivKeepWidth">
+                        <label className="numberLabel">Number of Items: </label>
+                        <input className="numberInput" type="number" min="5" max="1500" onChange={(event) => this.handleItemsInputOnChange(event)} defaultValue={this.state.numberOfItems}/>
+                    </div>
+                    <div className="centerdivKeepWidth">
+                        <label className="numberLabel">Delay: </label>
+                        <input className="numberInput" type="number" min="1" max="100" onChange={(event) => this.handleDelayInputOnChange(event)} defaultValue={this.state.delay}/>
+                    </div>
                 </div>
             </ div>
         );
