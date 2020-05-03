@@ -9,6 +9,7 @@ This project simply allows you to vizualise how some of the most popular sorting
 </div>
 
 <br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
 ## How to run
 
