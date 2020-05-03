@@ -13,6 +13,7 @@ After cloning the repo, you need to install its dependencies, so open your termi
 After installing the dependencies, you can run the application. you can use "npm start" or "yarn start" from you terminal and the application will open in a new window.
 
 ## Screenshots
-
-<img width="260" align="right" src="Screenshots/ScreenRecorderProject1.gif">
-<img width="260" align="right" src="Screenshots/Sorting_1.gif">
+<div>
+  <img width="260" align="right" src="Screenshots/ScreenRecorderProject1.gif">
+  <img width="260" align="right" src="Screenshots/Sorting_1.gif">
+</div>
