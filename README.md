@@ -1,6 +1,6 @@
 # Sorting Algorithm Visualizer
 
-This project simply allows you to vizualise how some of the most popular sorting algorithms ever created work.
+This project simply allows you to vizualise how 4 of the most popular sorting algorithms ever created work.
 
 ## Screenshots
 <div>
