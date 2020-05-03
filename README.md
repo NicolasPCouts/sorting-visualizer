@@ -2,6 +2,10 @@
 
 This project simply allows you to vizualise how some of the most popular sorting algorithms ever created work.
 
+##Screenshots
+
+![](Screenshots/ScreenRecorderProject1.gif)
+
 ## How to run
 
 First of all you need to clone this repository to your machine and you need to make sure that you either have [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/en/) installed on your machine.
