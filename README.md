@@ -4,7 +4,7 @@ This project simply allows you to vizualise how some of the most popular sorting
 
 ## Screenshots
 
-<img width="260" align="right" style="display:block" src="Screenshots/ScreenRecorderProject1.gif">
+<img width="260" align="right" display="block" src="Screenshots/ScreenRecorderProject1.gif">
 <img width="260" align="right" src="Screenshots/Sorting_1.gif">
 
 ## How to run
