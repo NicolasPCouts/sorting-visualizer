@@ -4,8 +4,8 @@ This project simply allows you to vizualise how some of the most popular sorting
 
 ## Screenshots
 <div>
-  <img width="260" align="right" src="Screenshots/ScreenRecorderProject1.gif">
-  <img width="260" align="right" src="Screenshots/Sorting_1.gif">
+  <img width="260" align="left" src="Screenshots/ScreenRecorderProject1.gif">
+  <img width="260" align="left" src="Screenshots/Sorting_1.gif">
 </div>
 
 
