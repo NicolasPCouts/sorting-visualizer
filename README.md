@@ -8,7 +8,7 @@ This project simply allows you to vizualise how some of the most popular sorting
   <img width="260" align="left" src="Screenshots/Sorting_1.gif">
 </div>
 
-<br/>
+<br/><br/><br/><br/><br/><br/>
 
 ## How to run
 
