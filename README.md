@@ -4,7 +4,7 @@ This project simply allows you to vizualise how some of the most popular sorting
 
 ## Screenshots
 
-<img width="160" align="right" src="https://github.com/NicolasPCouts/sortingvisualizer/blob/master/Screenshots/ScreenRecorderProject1.gif">
+<img width="160" align="right" src="Screenshots/ScreenRecorderProject1.gif">
 
 ![](Screenshots/ScreenRecorderProject1.gif)
 
