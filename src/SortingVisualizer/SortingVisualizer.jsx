@@ -136,7 +136,7 @@ export default class SortingVisualizer extends React.Component{
         let widthValue = 40 / this.state.numberOfItems;
         return (
             <div className="main-div" id="centerdiv">
-                <div className="centerdivKeepWidth">
+                <div className="centerdivKeepWidth" id="itemsDiv">
                     {arrayToSort.map((heightValue, idx) => (
                         <div className="array-item" key={idx} style={{height: `${heightValue / 25}vw`, width: `${widthValue}vw`, backgroundColor: this.getColor(idx)}}>
                             
