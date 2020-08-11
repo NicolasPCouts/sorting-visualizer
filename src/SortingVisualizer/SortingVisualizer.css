@@ -15,6 +15,7 @@ html{
 
 #itemsDiv{
     height: 42vw;
+    position: relative;
 }
 
 .array-item{
@@ -22,6 +23,8 @@ html{
     border-radius: 15px 15px 0px 0px;
     margin: 0px 0px 2px 2px;
     transition: height 0.3s;
+    position: sticky;
+    top: 999999px;
 }
 
 label{
