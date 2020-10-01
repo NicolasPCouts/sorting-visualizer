@@ -2,6 +2,10 @@
 
 This project simply allows you to vizualise how 4 of the most popular sorting algorithms ever created work.
 
+## Live Test Link
+You can test the application using this URL : 
+https://nicolaspcouts.github.io/sorting-visualizer/
+
 ## Screenshots
 <div>
   <img width="260" align="left" src="Screenshots/ScreenRecorderProject1.gif">
